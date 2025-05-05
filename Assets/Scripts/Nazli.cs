@@ -5,27 +5,50 @@ using TMPro;
 
 public class TypewriterEffect : MonoBehaviour
 {
-    public TMP_Text dialogText;
-    public GameObject dialogPanel;
-    public float typingSpeed = 0.03f;
+    [Header("UI References")]
+    [SerializeField] private TMP_Text dialogText = null;
+    [SerializeField] private GameObject dialogPanel = null;
+
+    [Header("Typing Settings")]
+    [SerializeField] private float typingSpeed = 0.03f;
 
     private List<string> messages = new List<string>();
     private int currentMessageIndex = 0;
-    private Coroutine typingCoroutine;
+    private Coroutine typingCoroutine = null;
+    private bool isTyping = false;
 
-    void Start()
+    void Awake()
     {
-        dialogPanel.SetActive(false); // Baþta kapalý kalsýn
+        // Hide at start
+        if (dialogPanel != null)
+            dialogPanel.SetActive(false);
     }
 
     void Update()
     {
-        if (dialogPanel.activeSelf && Input.GetMouseButtonDown(0))
+        if (!dialogPanel.activeSelf)
+            return;
+
+        if (Input.GetMouseButtonDown(0))
         {
-            ShowNextMessage();
+            if (isTyping)
+            {
+                // Skip to full text
+                StopCoroutine(typingCoroutine);
+                dialogText.text = messages[currentMessageIndex];
+                isTyping = false;
+            }
+            else
+            {
+                // Move to next message
+                ShowNextMessage();
+            }
         }
     }
 
+    /// <summary>
+    /// Kick off a new dialogue sequence.
+    /// </summary>
     public void StartDialogue(List<string> newMessages)
     {
         if (newMessages == null || newMessages.Count == 0)
@@ -39,27 +62,34 @@ public class TypewriterEffect : MonoBehaviour
 
     private void ShowNextMessage()
     {
-        if (currentMessageIndex < messages.Count)
+        if (currentMessageIndex >= messages.Count)
         {
-            if (typingCoroutine != null)
-                StopCoroutine(typingCoroutine);
+            EndDialogue();
+            return;
+        }
 
-            typingCoroutine = StartCoroutine(TypeText(messages[currentMessageIndex]));
-            currentMessageIndex++;
-        }
-        else
-        {
-            dialogPanel.SetActive(false); // Bittiðinde panel kapanýr
-        }
+        // Begin typing
+        typingCoroutine = StartCoroutine(TypeText(messages[currentMessageIndex]));
+        currentMessageIndex++;
     }
 
-    private IEnumerator TypeText(string textToDisplay)
+    private IEnumerator TypeText(string text)
     {
+        isTyping = true;
         dialogText.text = "";
-        foreach (char c in textToDisplay)
+
+        foreach (var c in text)
         {
             dialogText.text += c;
             yield return new WaitForSeconds(typingSpeed);
         }
+
+        isTyping = false;
+    }
+
+    private void EndDialogue()
+    {
+        dialogPanel.SetActive(false);
+        dialogText.text = "";
     }
 }

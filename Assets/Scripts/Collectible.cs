@@ -43,6 +43,7 @@ public class Collectible : MonoBehaviour
     public OrthographicCharacterController characterController;
     public PlayerData playerData;
     public MapSettings mapSettings;
+    public InGameCanvasRefs gameCanvasRefs;
 
     void Start()
     {
@@ -52,11 +53,13 @@ public class Collectible : MonoBehaviour
         initialModelPosition = model.transform.localPosition;
         initialModelRotation = model.transform.localRotation;
 
+        gameCanvasRefs = FindAnyObjectByType<InGameCanvasRefs>();
         shootController = PlayerDataManager.Instance.GetComponent<ShootingController>();
         rewindController = PlayerDataManager.Instance.GetComponent<TimeRewindAbility>();
         characterController = PlayerDataManager.Instance.GetComponent<OrthographicCharacterController>();
         playerData = PlayerDataManager.Instance.GetComponent<PlayerData>();
         mapSettings = FindAnyObjectByType<MapSettings>();   
+        
     }
 
     void Update()
@@ -114,6 +117,7 @@ public class Collectible : MonoBehaviour
         {
             case CollectibleType.Currency:
                 PlayerDataManager.Instance.AddCoins(Amount);
+                mapSettings.totalCoins = mapSettings.totalCoins + Amount;
                 StartCoroutine(playerData.UpdateCoinText());
                 PlayerDataManager.Instance.GetComponent<PlayerHealth>().ModifyHealth(Amount*5);
                 break;
@@ -122,12 +126,19 @@ public class Collectible : MonoBehaviour
                 shootController.canShoot = true;
                 playerData.staffCollected = true;
                 mapSettings.keyPiecesCollected++;
+                gameCanvasRefs.staffOn.SetActive(true);
+                gameCanvasRefs.staffOff.SetActive(false);
+                PlayerDataManager.Instance.GetComponent<PlayerData>().staffCollected = true;
                 break;
 
             case CollectibleType.Spellbook:
                 rewindController.canRewind = true;
                 playerData.bookCollected = true;
                 StartCoroutine(ActivateRewind());
+                gameCanvasRefs.bookOn.SetActive(true);
+                gameCanvasRefs.bookOff.SetActive(false);
+                PlayerDataManager.Instance.GetComponent<PlayerData>().bookCollected = true;
+                FindAnyObjectByType<Scene2DialogueMaster>().BookDialogue();
                 break;
 
             case CollectibleType.MageHat:
@@ -138,6 +149,9 @@ public class Collectible : MonoBehaviour
                 playerData.hatCollected = true;
                 playerData.capeCollected = true;
                 mapSettings.keyPiecesCollected++;
+                gameCanvasRefs.hatOn.SetActive(true);
+                gameCanvasRefs.hatOff.SetActive(false);
+                PlayerDataManager.Instance.GetComponent<PlayerData>().hatCollected = true;
                 break;
 
             case CollectibleType.LevelPiece:

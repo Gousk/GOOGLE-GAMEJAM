@@ -44,6 +44,10 @@ public class MapSettings : MonoBehaviour
     public List<Transform> checkpoints = new List<Transform>();
     private RespawnManager respawnManager;
 
+    private Scene3DialogueMaster scene3DialogueMaster;
+
+    public bool doOnce = false;
+
     private void Start()
     {
         StartCoroutine(SetMapSettings());
@@ -51,10 +55,16 @@ public class MapSettings : MonoBehaviour
         respawnManager.mapSettings = this;
         totalCoins = PlayerDataManager.Instance.GetComponent<PlayerData>().currentCoins;
         coinText.text = totalCoins.ToString();
+
+        if(isLevel3)
+        {
+            scene3DialogueMaster = FindAnyObjectByType<Scene3DialogueMaster>();
+        }
     }
 
     private void Update()
     {
+        FindAnyObjectByType<CoinTextRef>().GetComponent<TMP_Text>().text = totalCoins.ToString();
         Debug.Log(OrthographicCharacterController.gravity + " " + gravity + "anlık");
         Debug.Log(OrthographicCharacterController.airDirectionInfluence + " " + airInfluence + "anlık");
 
@@ -77,8 +87,10 @@ public class MapSettings : MonoBehaviour
         {
             if (keyPiecesCollected == 3)
             {
-                if(destroyedBombCount == neededBombCount)
+                if(destroyedBombCount == neededBombCount && !doOnce)
                 {
+                    doOnce = true;
+                    scene3DialogueMaster.HatDialogue();
                     hat.SetActive(true);
                 }
             }

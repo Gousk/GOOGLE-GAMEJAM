@@ -14,9 +14,15 @@ public class PauseMenuManager : MonoBehaviour
     private bool isPaused = false;
     private ShootingController shootingController;
 
+    //public OrthographicCharacterController orthographicCharacterController;
+    public PlayerHealth playerHealth;
+    private float drainRef;
+
     private void Start()
     {
         ResumeGame();
+        //orthographicCharacterController = PlayerDataManager.Instance.GetComponent<OrthographicCharacterController>();
+        playerHealth = PlayerDataManager.Instance.GetComponent<PlayerHealth>();
     }
 
     void Update()
@@ -61,5 +67,22 @@ public class PauseMenuManager : MonoBehaviour
         // Ensure time is running in main menu
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void PauseForDialogue()
+    {
+        //Debug.Log(PlayerDataManager.Instance.GetComponent<OrthographicCharacterController>());
+        //PlayerDataManager.Instance.GetComponent<OrthographicCharacterController>().enabled = false;
+        //PlayerDataManager.Instance.GetComponent<CharacterController>().enabled = false;
+        drainRef = PlayerDataManager.Instance.GetComponent<PlayerHealth>().healthDrainRate;
+        PlayerDataManager.Instance.GetComponent<PlayerHealth>().healthDrainRate = 0f;
+    }
+
+    public void ResumeForDialogue()
+    {
+        //PlayerDataManager.Instance.GetComponent<OrthographicCharacterController>().enabled = true;
+        //PlayerDataManager.Instance.GetComponent<OrthographicCharacterController>().GetComponent<CharacterController>().enabled = true;
+        PlayerDataManager.Instance.GetComponent<PlayerHealth>().healthDrainRate = drainRef;
+
     }
 }
