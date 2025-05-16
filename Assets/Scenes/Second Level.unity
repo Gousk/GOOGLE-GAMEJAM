@@ -2779,9 +2779,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1941300741}
     m_Modifications:
+    - target: {fileID: 709862875348459633, guid: 0f7304dc6fc4c3542b5da3de8018939d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438620965169518090, guid: 0f7304dc6fc4c3542b5da3de8018939d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6263342779057057368, guid: 0f7304dc6fc4c3542b5da3de8018939d, type: 3}
       propertyPath: m_Name
       value: Map
+      objectReference: {fileID: 0}
+    - target: {fileID: 6352443147341245155, guid: 0f7304dc6fc4c3542b5da3de8018939d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8248279061965265168, guid: 0f7304dc6fc4c3542b5da3de8018939d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2821,6 +2833,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248279061965265168, guid: 0f7304dc6fc4c3542b5da3de8018939d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397284318631660608, guid: 0f7304dc6fc4c3542b5da3de8018939d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428222398034876899, guid: 0f7304dc6fc4c3542b5da3de8018939d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8990477787042870781, guid: 0f7304dc6fc4c3542b5da3de8018939d, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3533,6 +3557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 227888773}
   mainMenuSceneName: MainMenu
+  playerHealth: {fileID: 0}
 --- !u!4 &1406224791
 Transform:
   m_ObjectHideFlags: 0
@@ -4896,6 +4921,7 @@ MonoBehaviour:
   - {fileID: 453513643}
   - {fileID: 206279403}
   - {fileID: 754137676}
+  doOnce: 0
 --- !u!1 &1941643531
 GameObject:
   m_ObjectHideFlags: 0

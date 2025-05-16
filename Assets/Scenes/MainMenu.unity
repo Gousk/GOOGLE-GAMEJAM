@@ -160,7 +160,7 @@ VideoPlayer:
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
-  m_Url: 
+  m_Url: https://drive.google.com/uc?export=download&id=1IDMISqfFD-FbTe7aBErYS6_cN1q7jAEV
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
@@ -794,9 +794,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1486022662862915562, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1312
+    - target: {fileID: 422230382807378255, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 422230382807378255, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
+      propertyPath: m_Color.g
+      value: 0.90737563
+      objectReference: {fileID: 0}
+    - target: {fileID: 422230382807378255, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
+      propertyPath: m_Color.r
+      value: 0.745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222783164667205716, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2401252333546517217, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
       propertyPath: m_Pivot.x
@@ -886,50 +898,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5722944606886852451, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1312
-      objectReference: {fileID: 0}
     - target: {fileID: 6231152616550300067, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 106961402}
-    - target: {fileID: 6231152616550300067, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 6231152616550300067, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainMenuController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587164581457914344, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1566
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587164581457914344, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 763
+    - target: {fileID: 6367740396500142996, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6706901531538521039, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 141597754}
-    - target: {fileID: 7825666147554313458, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1312
+    - target: {fileID: 7915840984029240104, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961365401784640467, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8930911622024403720, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 106961402}
-    - target: {fileID: 8930911622024403720, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930911622024403720, guid: dbcf7cf1865d6ce44865b4dfc7ea8b02, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainMenuController, Assembly-CSharp
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
