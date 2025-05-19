@@ -4,6 +4,8 @@ Splitself, yanlış giden bir büyü sonucu benliği ve eşyaları farklı diyar
 
 Oyunu itch.io üstünden deneyebilirsiniz | https://gousk.itch.io/splitself 
 
+Tanıtım videosu | https://www.youtube.com/watch?v=mfPdwhOptAQ
+
 Kontroller:
 
 WASD: Hareket
